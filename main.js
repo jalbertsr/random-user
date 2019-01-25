@@ -24,11 +24,10 @@ const showData = () => {
     url: 'https://randomuser.me/api/',
     dataType: 'json',
     success: (data) => {
-      console.log(data)
       const { registered, dob, gender, nat, email, phone, location, picture } = data.results[0]
       
-      const parsedRegDate = registered.split(' ')[0].split('-').join('/')
-      const parsedDateBirth = dob.split(' ')[0].split('-').join('/')
+      const parsedRegDate = registered.date.split(' ')[0].split('-').join('/')
+      const parsedDateBirth = dob.date.split(' ')[0].split('-').join('/')
 
       $('.registration-date').text(parsedRegDate)
       $('.born-date').text(parsedDateBirth)
