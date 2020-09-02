@@ -25,6 +25,7 @@ const showData = () => {
     dataType: 'json',
     success: (data) => {
       const { registered, dob, gender, nat, email, phone, location, picture } = data.results[0]
+      const { street, country, postcode } = location;
       
       const parsedRegDate = registered.date.split(' ')[0].split('-').join('/')
       const parsedDateBirth = dob.date.split(' ')[0].split('-').join('/')
@@ -32,7 +33,7 @@ const showData = () => {
       $('.registration-date').text(parsedRegDate)
       $('.born-date').text(parsedDateBirth)
       $('.gender').text(gender)
-      $('.address').text(location.street)
+      $('.address').text(`${street.name} ${street.number}, ${postcode} ${country}`)
       $('.email').text(email)
       $('.phone').text(phone)
       $('.profile-image').attr('src', picture.large)
